@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Signin = () => {
 
@@ -33,7 +33,7 @@ try{
   formdata.append("password", password)
 
   // interact with axios for the response
-  const response = await axios.post("https://kbenkamotho.alwaysdata.net/api/signin", formdata);
+  const response = await axios.post("https://jeremiahprince.alwaysdata.net/api/signin", formdata);
 
   // Set the loading hook back to default
   setLoading("");
@@ -41,10 +41,12 @@ try{
   // check whether the user exists as part of your response from the API
   if(response.data.user){
     // If user is there, definitely the details during signin are correct
+    // console.log(response.data.user)
     // setSuccess("Login successful")
 
      // Store user details in local storage
     localStorage.setItem("user", JSON.stringify(response.data.user));
+    
 
     // If it is successful, let a person get redirected to another page
     navigate("/");
@@ -93,7 +95,11 @@ catch(error){
 
             <input type="submit"
             value="Signin" 
-            className='btn btn-primary'/>
+            className='btn btn-primary'/> <br /> <br />
+
+            
+                        Don't have an account? 
+                        <Link to={'/signup'}>Signup</Link>
           </form>
         </div>
     </div>
