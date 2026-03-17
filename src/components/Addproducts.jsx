@@ -47,6 +47,13 @@ const Addproducts = () => {
       setProductDescription("");
       setProductCost("");
       setProductPhoto("");
+
+      // reseting the form back to default
+      e.target.reset()
+
+    setTimeout(() => {
+      setSuccess("");
+    }, 5000);
     }
     catch(error){
       // set loading hook back to default
